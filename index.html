@@ -5,84 +5,84 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SportXtv Pro</title>
     <style>
-        body { background-color: #0d0d0d; color: #fff; font-family: 'Segoe UI', sans-serif; margin: 0; padding: 0; text-align: center; }
+        body { background-color: #0d0d0d; color: #fff; font-family: 'Segoe UI', sans-serif; margin: 0; padding: 0; }
         .ust-bar { background: linear-gradient(180deg, #1a1a1a, #000); padding: 20px; border-bottom: 3px solid #ff6600; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; }
-        .ust-bar h1 { color: #ff6600; margin: 0; font-size: 22px; text-transform: uppercase; letter-spacing: 1px; }
+        .logo { color: #ff6600; margin: 0; font-size: 22px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; }
         
+        .durum { background: #221100; color: #ff9900; padding: 6px; text-align: center; font-size: 11px; font-weight: bold; border-bottom: 1px solid #333; }
+        
+        .ana-butonlar { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; padding: 15px; }
+        .ana-kart { background: #1a1a1a; border-radius: 12px; padding: 20px; text-align: center; border: 1px solid #333; cursor: pointer; font-weight: bold; color: #ff6600; box-shadow: 0 4px 10px rgba(0,0,0,0.5); }
+
         /* Akordiyon Menü */
-        .grup-baslik { background: #1a1a1a; color: #ff6600; padding: 15px; margin: 8px 12px; border-radius: 10px; cursor: pointer; text-align: left; font-weight: bold; display: flex; justify-content: space-between; border: 1px solid #333; transition: 0.3s; }
-        .grup-baslik:active { background: #331a00; }
-        .grup-icerik { display: none; padding: 5px 15px; background: #050505; }
+        .kat-baslik { background: #1a1a1a; color: #fff; padding: 18px; margin: 8px 15px; border-radius: 10px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; border-left: 5px solid #ff6600; font-weight: bold; font-size: 15px; transition: 0.3s; }
+        .kat-baslik:active { background: #252525; }
+        .kat-icerik { display: none; padding: 10px 20px; background: #080808; border-radius: 0 0 10px 10px; margin: -8px 15px 10px 15px; border: 1px solid #222; border-top: none; }
         
-        .yayin-satiri { background: #151515; padding: 12px; border-radius: 8px; margin-bottom: 6px; display: flex; justify-content: space-between; align-items: center; border-left: 4px solid #ff6600; }
-        .izle-btn { background: #ff6600; color: white; padding: 8px 15px; border-radius: 5px; text-decoration: none; font-size: 11px; font-weight: bold; }
+        .yayin-kutusu { background: #151515; padding: 15px; border-radius: 8px; margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center; border: 1px solid #222; }
+        .izle-btn { background: linear-gradient(90deg, #ff6600, #ff3300); color: white; padding: 8px 18px; border-radius: 6px; text-decoration: none; font-weight: bold; font-size: 12px; box-shadow: 0 2px 5px rgba(255,102,0,0.3); }
         
-        .container { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; padding: 15px; }
-        .kart { background: #1a1a1a; border-radius: 10px; padding: 15px 5px; color: white; cursor: pointer; border: 1px solid #222; font-size: 13px; font-weight: bold; }
-        .duyuru { background: #221100; color: #ff9900; padding: 5px; font-size: 10px; font-weight: bold; border-bottom: 1px solid #333; }
+        span.ok { font-size: 12px; color: #ff6600; }
     </style>
 </head>
 <body>
 
-    <div class="duyuru"><marquee>SportXtv: Dizi, Film ve Maç yayınları Rusya sunucusu üzerinden anlık güncellenir.</marquee></div>
+    <div class="durum">
+        <marquee>🚀 SportXtv Pro: Tüm içerikler Global CDN protokolü ve GetLinkTR Cloud altyapısı ile anlık güncellenir.</marquee>
+    </div>
 
     <div class="ust-bar">
-        <h1>SPORTXTV PRO</h1>
-        <div style="color:#ff6600; font-weight:bold; font-size: 12px;">CANLI</div>
+        <div class="logo">SPORTXTV PRO</div>
+        <div style="font-size: 10px; color: #888; background: #222; padding: 3px 8px; border-radius: 10px;">V1.0.5</div>
     </div>
 
-    <div class="container">
-        <div class="kart" onclick="window.location.reload()"><i>⚽</i><br>MAÇLAR</div>
-        <div class="kart" onclick="alert('Lütfen aşağıdan bir kategori seçin!')"><i>📺</i><br>TV & MEDYA</div>
+    <div class="ana-butonlar">
+        <div class="ana-kart" onclick="window.location.reload()">⚽ CANLI MAÇLAR</div>
+        <div class="ana-kart" onclick="alert('Lütfen kategorilere dokunarak yayınları listeleyin!')">📺 TÜM KANALLAR</div>
     </div>
 
-    <div class="grup-baslik" onclick="grupAc('spor')">⚽ SPOR KANALLARI <span>▼</span></div>
-    <div id="spor" class="grup-icerik">
-        <div class="yayin-satiri"><span>beIN Sports 1</span><a href="#" class="izle-btn">İZLE</a></div>
-        <div class="yayin-satiri"><span>beIN Sports 2</span><a href="#" class="izle-btn">İZLE</a></div>
-        <div class="yayin-satiri"><span>S Sport</span><a href="#" class="izle-btn">İZLE</a></div>
+    <div class="kat-baslik" onclick="acKapat('ulusal')">📺 ULUSAL KANALLAR <span class="ok">▼</span></div>
+    <div id="ulusal" class="kat-icerik">
+        <div class="yayin-kutusu"><span>TRT 1 HD</span><a href="#" class="izle-btn">İZLE</a></div>
+        <div class="yayin-kutusu"><span>ATV HD</span><a href="#" class="izle-btn">İZLE</a></div>
+        <div class="yayin-kutusu"><span>KANAL D HD</span><a href="#" class="izle-btn">İZLE</a></div>
+        <div class="yayin-kutusu"><span>STAR TV HD</span><a href="#" class="izle-btn">İZLE</a></div>
+        <div class="yayin-kutusu"><span>NOW TV</span><a href="#" class="izle-btn">İZLE</a></div>
+        <div class="yayin-kutusu"><span>TV8 HD</span><a href="#" class="izle-btn">İZLE</a></div>
     </div>
 
-    <div class="grup-baslik" onclick="grupAc('diziler')">🎬 POPÜLER DİZİLER <span>▼</span></div>
-    <div id="diziler" class="grup-icerik">
-        <div class="yayin-satiri"><span>Yerli Diziler</span><a href="#" class="izle-btn">LİSTELE</a></div>
-        <div class="yayin-satiri"><span>Yabancı Diziler</span><a href="#" class="izle-btn">LİSTELE</a></div>
-        <div class="yayin-satiri"><span>Dizi Arşivi (7/24)</span><a href="#" class="izle-btn">AÇ</a></div>
+    <div class="kat-baslik" onclick="acKapat('spor')">⚽ SPOR KANALLARI <span class="ok">▼</span></div>
+    <div id="spor" class="kat-icerik">
+        <div class="yayin-kutusu"><span>beIN Sports 1</span><a href="#" class="izle-btn">İZLE</a></div>
+        <div class="yayin-kutusu"><span>beIN Sports 2</span><a href="#" class="izle-btn">İZLE</a></div>
+        <div class="yayin-kutusu"><span>S Sport 1</span><a href="#" class="izle-btn">İZLE</a></div>
+        <div class="yayin-kutusu"><span>S Sport 2</span><a href="#" class="izle-btn">İZLE</a></div>
+        <div class="yayin-kutusu"><span>Smart Spor</span><a href="#" class="izle-btn">İZLE</a></div>
+        <div class="yayin-kutusu"><span>A Spor HD</span><a href="#" class="izle-btn">İZLE</a></div>
     </div>
 
-    <div class="grup-baslik" onclick="grupAc('filmler')">🎥 FİLM ARŞİVİ <span>▼</span></div>
-    <div id="filmler" class="grup-icerik">
-        <div class="yayin-satiri"><span>Vizyon Filmleri</span><a href="#" class="izle-btn">İZLE</a></div>
-        <div class="yayin-satiri"><span>Aksiyon & Macera</span><a href="#" class="izle-btn">İZLE</a></div>
-        <div class="yayin-satiri"><span>Korku & Gerilim</span><a href="#" class="izle-btn">İZLE</a></div>
+    <div class="kat-baslik" onclick="acKapat('diziler')">🎬 DİZİ KANALLARI <span class="ok">▼</span></div>
+    <div id="diziler" class="kat-icerik">
+        <div class="yayin-kutusu"><span>Yerli Dizi Arşivi</span><a href="#" class="izle-btn">LİSTELE</a></div>
+        <div class="yayin-kutusu"><span>Yabancı Dizi Arşivi</span><a href="#" class="izle-btn">LİSTELE</a></div>
+        <div class="yayin-kutusu"><span>Netflix Orijinal</span><a href="#" class="izle-btn">GİRİŞ</a></div>
     </div>
 
-    <div class="grup-baslik" onclick="grupAc('ulusal')">📺 ULUSAL KANALLAR <span>▼</span></div>
-    <div id="ulusal" class="grup-icerik">
-        <div class="yayin-satiri"><span>TRT 1</span><a href="#" class="izle-btn">İZLE</a></div>
-        <div class="yayin-satiri"><span>ATV</span><a href="#" class="izle-btn">İZLE</a></div>
-        <div class="yayin-satiri"><span>KANAL D</span><a href="#" class="izle-btn">İZLE</a></div>
-    </div>
-
-    <div class="grup-baslik" onclick="grupAc('haber')">📰 HABER KANALLARI <span>▼</span></div>
-    <div id="haber" class="grup-icerik">
-        <div class="yayin-satiri"><span>A Haber</span><a href="#" class="izle-btn">İZLE</a></div>
-        <div class="yayin-satiri"><span>NTV</span><a href="#" class="izle-btn">İZLE</a></div>
-    </div>
-
-    <div class="grup-baslik" onclick="grupAc('premium')">💎 PREMIUM PLATFORMLAR <span>▼</span></div>
-    <div id="premium" class="grup-icerik">
-        <div class="yayin-satiri"><span>Netflix</span><a href="#" class="izle-btn">GİRİŞ</a></div>
-        <div class="yayin-satiri"><span>Exxen</span><a href="#" class="izle-btn">GİRİŞ</a></div>
+    <div class="kat-baslik" onclick="acKapat('filmler')">🎥 FİLM KANALLARI <span class="ok">▼</span></div>
+    <div id="filmler" class="kat-icerik">
+        <div class="yayin-kutusu"><span>Vizyon Filmleri</span><a href="#" class="izle-btn">İZLE</a></div>
+        <div class="yayin-kutusu"><span>Aksiyon Filmleri</span><a href="#" class="izle-btn">İZLE</a></div>
+        <div class="yayin-kutusu"><span>Korku & Gerilim</span><a href="#" class="izle-btn">İZLE</a></div>
     </div>
 
     <script>
-        function grupAc(id) {
-            var x = document.getElementById(id);
-            if (x.style.display === "block") {
-                x.style.display = "none";
+        function acKapat(id) {
+            var el = document.getElementById(id);
+            // Açık olanı kapat, kapalı olanı aç
+            if (el.style.display === "block") {
+                el.style.display = "none";
             } else {
-                x.style.display = "block";
+                el.style.display = "block";
             }
         }
     </script>
