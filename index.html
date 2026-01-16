@@ -8,97 +8,83 @@
         body { background-color: #0d0d0d; color: #fff; font-family: 'Segoe UI', sans-serif; margin: 0; padding: 0; text-align: center; }
         .ust-bar { background: linear-gradient(180deg, #1a1a1a, #000); padding: 20px; border-bottom: 3px solid #ff6600; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; }
         .ust-bar h1 { color: #ff6600; margin: 0; font-size: 22px; text-transform: uppercase; letter-spacing: 1px; }
-        .menu-ac-btn { background: #ff6600; color: white; border: none; padding: 8px 15px; border-radius: 5px; font-weight: bold; cursor: pointer; box-shadow: 0 0 10px rgba(255,102,0,0.5); }
         
-        .duyuru { background: #331a00; color: #ffcc00; padding: 5px; font-size: 11px; font-weight: bold; }
+        /* Akordiyon Menü */
+        .grup-baslik { background: #1a1a1a; color: #ff6600; padding: 15px; margin: 8px 12px; border-radius: 10px; cursor: pointer; text-align: left; font-weight: bold; display: flex; justify-content: space-between; border: 1px solid #333; transition: 0.3s; }
+        .grup-baslik:active { background: #331a00; }
+        .grup-icerik { display: none; padding: 5px 15px; background: #050505; }
         
-        .container { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; padding: 20px; }
-        .kart { background: #1a1a1a; border: 1px solid #333; border-radius: 15px; padding: 25px 10px; transition: 0.3s; color: white; display: flex; flex-direction: column; align-items: center; cursor: pointer; }
-        .kart i { font-size: 35px; margin-bottom: 10px; }
+        .yayin-satiri { background: #151515; padding: 12px; border-radius: 8px; margin-bottom: 6px; display: flex; justify-content: space-between; align-items: center; border-left: 4px solid #ff6600; }
+        .izle-btn { background: #ff6600; color: white; padding: 8px 15px; border-radius: 5px; text-decoration: none; font-size: 11px; font-weight: bold; }
         
-        .bot-btn { background: linear-gradient(90deg, #ff3300, #ff6600); color: white; border: none; width: 90%; padding: 18px; border-radius: 12px; font-weight: bold; margin-top: 10px; cursor: pointer; }
-        
-        .liste-baslik { color: #ff6600; text-align: left; padding-left: 20px; margin-top: 20px; font-weight: bold; font-size: 18px; border-left: 5px solid #ff6600; margin-left: 10px; }
-        .kat-baslik { color: #888; font-size: 12px; text-align: left; padding-left: 20px; margin-top: 20px; text-transform: uppercase; letter-spacing: 1px; }
-        
-        #liste-alani { padding: 20px; text-align: left; margin-bottom: 50px; }
-        .yayin-satiri { background: #1a1a1a; padding: 15px; border-radius: 12px; margin-bottom: 10px; border-left: 5px solid #444; display: flex; justify-content: space-between; align-items: center; }
-        .yayin-satiri.aktif { border-left-color: #ff6600; }
-        .izle-btn { background: #ff6600; color: white; padding: 10px 18px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 13px; }
+        .container { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; padding: 15px; }
+        .kart { background: #1a1a1a; border-radius: 10px; padding: 15px 5px; color: white; cursor: pointer; border: 1px solid #222; font-size: 13px; font-weight: bold; }
+        .duyuru { background: #221100; color: #ff9900; padding: 5px; font-size: 10px; font-weight: bold; border-bottom: 1px solid #333; }
     </style>
 </head>
 <body>
 
-    <div class="duyuru"><marquee>SportXtv: Tüm yayınlar GetLinkTR protokolü ile Rusya üzerinden anlık güncellenir.</marquee></div>
+    <div class="duyuru"><marquee>SportXtv: Dizi, Film ve Maç yayınları Rusya sunucusu üzerinden anlık güncellenir.</marquee></div>
 
     <div class="ust-bar">
         <h1>SPORTXTV PRO</h1>
-        <button class="menu-ac-btn" onclick="yukle('tumu')">☰ TÜMÜ</button>
+        <div style="color:#ff6600; font-weight:bold; font-size: 12px;">CANLI</div>
     </div>
 
     <div class="container">
-        <div class="kart" onclick="yukle('maclar')"><i>⚽</i><span>MAÇLAR</span></div>
-        <div class="kart" onclick="yukle('kanallar')"><i>📺</i><span>SPOR TV</span></div>
-        <div class="kart" onclick="yukle('tumu')"><i>🎬</i><span>DİZİ & FİLM</span></div>
-        <div class="kart" onclick="yukle('ozetler')"><i>🎥</i><span>ÖZETLER</span></div>
+        <div class="kart" onclick="window.location.reload()"><i>⚽</i><br>MAÇLAR</div>
+        <div class="kart" onclick="alert('Lütfen aşağıdan bir kategori seçin!')"><i>📺</i><br>TV & MEDYA</div>
     </div>
 
-    <button class="bot-btn" onclick="alert('Bot Sinyali Gönderildi!')">⚠️ YAYIN BULUNAMADI (BOTU UYAR)</button>
+    <div class="grup-baslik" onclick="grupAc('spor')">⚽ SPOR KANALLARI <span>▼</span></div>
+    <div id="spor" class="grup-icerik">
+        <div class="yayin-satiri"><span>beIN Sports 1</span><a href="#" class="izle-btn">İZLE</a></div>
+        <div class="yayin-satiri"><span>beIN Sports 2</span><a href="#" class="izle-btn">İZLE</a></div>
+        <div class="yayin-satiri"><span>S Sport</span><a href="#" class="izle-btn">İZLE</a></div>
+    </div>
 
-    <div class="liste-baslik" id="baslik">CANLI MAÇLAR</div>
-    <div id="liste-alani">
-        <div class="yayin-satiri"><span>⏳ Liste hazırlanıyor...</span></div>
+    <div class="grup-baslik" onclick="grupAc('diziler')">🎬 POPÜLER DİZİLER <span>▼</span></div>
+    <div id="diziler" class="grup-icerik">
+        <div class="yayin-satiri"><span>Yerli Diziler</span><a href="#" class="izle-btn">LİSTELE</a></div>
+        <div class="yayin-satiri"><span>Yabancı Diziler</span><a href="#" class="izle-btn">LİSTELE</a></div>
+        <div class="yayin-satiri"><span>Dizi Arşivi (7/24)</span><a href="#" class="izle-btn">AÇ</a></div>
+    </div>
+
+    <div class="grup-baslik" onclick="grupAc('filmler')">🎥 FİLM ARŞİVİ <span>▼</span></div>
+    <div id="filmler" class="grup-icerik">
+        <div class="yayin-satiri"><span>Vizyon Filmleri</span><a href="#" class="izle-btn">İZLE</a></div>
+        <div class="yayin-satiri"><span>Aksiyon & Macera</span><a href="#" class="izle-btn">İZLE</a></div>
+        <div class="yayin-satiri"><span>Korku & Gerilim</span><a href="#" class="izle-btn">İZLE</a></div>
+    </div>
+
+    <div class="grup-baslik" onclick="grupAc('ulusal')">📺 ULUSAL KANALLAR <span>▼</span></div>
+    <div id="ulusal" class="grup-icerik">
+        <div class="yayin-satiri"><span>TRT 1</span><a href="#" class="izle-btn">İZLE</a></div>
+        <div class="yayin-satiri"><span>ATV</span><a href="#" class="izle-btn">İZLE</a></div>
+        <div class="yayin-satiri"><span>KANAL D</span><a href="#" class="izle-btn">İZLE</a></div>
+    </div>
+
+    <div class="grup-baslik" onclick="grupAc('haber')">📰 HABER KANALLARI <span>▼</span></div>
+    <div id="haber" class="grup-icerik">
+        <div class="yayin-satiri"><span>A Haber</span><a href="#" class="izle-btn">İZLE</a></div>
+        <div class="yayin-satiri"><span>NTV</span><a href="#" class="izle-btn">İZLE</a></div>
+    </div>
+
+    <div class="grup-baslik" onclick="grupAc('premium')">💎 PREMIUM PLATFORMLAR <span>▼</span></div>
+    <div id="premium" class="grup-icerik">
+        <div class="yayin-satiri"><span>Netflix</span><a href="#" class="izle-btn">GİRİŞ</a></div>
+        <div class="yayin-satiri"><span>Exxen</span><a href="#" class="izle-btn">GİRİŞ</a></div>
     </div>
 
     <script>
-        function yukle(tip) {
-            const liste = document.getElementById('liste-alani');
-            const baslik = document.getElementById('baslik');
-            liste.innerHTML = "⏳ Yukleniyor...";
-            
-            if (tip === 'tumu') {
-                baslik.innerText = 'MEDYA MERKEZİ';
-                liste.innerHTML = `
-                    <div class="kat-baslik">PREMIUM PLATFORMLAR</div>
-                    <div class="yayin-satiri aktif"><span>Netflix Arşivi</span><a href="#" class="izle-btn">GİRİŞ</a></div>
-                    <div class="yayin-satiri aktif"><span>Exxen Spor</span><a href="#" class="izle-btn">GİRİŞ</a></div>
-                    <div class="yayin-satiri aktif"><span>Disney+</span><a href="#" class="izle-btn">GİRİŞ</a></div>
-                    <div class="yayin-satiri aktif"><span>BluTV / Gain</span><a href="#" class="izle-btn">GİRİŞ</a></div>
-                    
-                    <div class="kat-baslik">CANLI SPOR KANALLARI</div>
-                    <div class="yayin-satiri aktif"><span>beIN Sports 1</span><a href="#" class="izle-btn">İZLE</a></div>
-                    <div class="yayin-satiri aktif"><span>beIN Sports 2</span><a href="#" class="izle-btn">İZLE</a></div>
-                    <div class="yayin-satiri aktif"><span>S Sport 1</span><a href="#" class="izle-btn">İZLE</a></div>
-                    <div class="yayin-satiri aktif"><span>S Sport 2</span><a href="#" class="izle-btn">İZLE</a></div>
-                    <div class="yayin-satiri aktif"><span>Smart Spor</span><a href="#" class="izle-btn">İZLE</a></div>
-                    
-                    <div class="kat-baslik">ULUSAL KANALLAR</div>
-                    <div class="yayin-satiri aktif"><span>TRT 1</span><a href="#" class="izle-btn">İZLE</a></div>
-                    <div class="yayin-satiri aktif"><span>ATV</span><a href="#" class="izle-btn">İZLE</a></div>
-                    <div class="yayin-satiri aktif"><span>KANAL D</span><a href="#" class="izle-btn">İZLE</a></div>
-                    <div class="yayin-satiri aktif"><span>STAR TV</span><a href="#" class="izle-btn">İZLE</a></div>
-                    <div class="yayin-satiri aktif"><span>TV8</span><a href="#" class="izle-btn">İZLE</a></div>
-                    <div class="yayin-satiri aktif"><span>NOW TV</span><a href="#" class="izle-btn">İZLE</a></div>
-                `;
-                return;
+        function grupAc(id) {
+            var x = document.getElementById(id);
+            if (x.style.display === "block") {
+                x.style.display = "none";
+            } else {
+                x.style.display = "block";
             }
-
-            let dosya = tip === 'maclar' ? 'mac_listesi.json' : 'kanallar.json';
-            baslik.innerText = tip === 'maclar' ? 'CANLI MAÇLAR' : 'SPOR TV KANALLARI';
-
-            fetch(dosya).then(r => r.json()).then(data => {
-                liste.innerHTML = "";
-                if(data.length === 0) {
-                    liste.innerHTML = "<div class='yayin-satiri'>Henüz yayın girişi yapılmadı.</div>";
-                }
-                data.forEach(item => {
-                    liste.innerHTML += `<div class="yayin-satiri aktif"><div><b>${item.saat || '7/24'}</b><br>${item.ad}</div><a href="${item.link}" class="izle-btn">İZLE</a></div>`;
-                });
-            }).catch(() => { 
-                liste.innerHTML = "<div class='yayin-satiri'>❌ Veri bekleniyor (Botu Kontrol Et).</div>"; 
-            });
         }
-        yukle('maclar');
     </script>
 </body>
 </html>
