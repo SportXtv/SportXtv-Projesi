@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SportXtv</title>
+    <style>
+        body { background: #000; color: #FFD700; font-family: sans-serif; text-align: center; margin: 0; }
+        .ust { background: #111; padding: 20px; border-bottom: 2px solid #FFD700; font-size: 22px; font-weight: bold; }
+        .kart { background: #222; margin: 15px; padding: 15px; border-radius: 10px; border: 1px solid #333; }
+        .buton { display: block; background: #FFD700; color: #000; padding: 12px; margin-top: 10px; text-decoration: none; border-radius: 5px; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="ust">SPORTXTV CANLI YAYIN</div>
+    <div id="liste">Maçlar yükleniyor...</div>
+    <script>
+        fetch('mac_listesi.json').then(r => r.json()).then(data => {
+            let alan = document.getElementById('liste');
+            alan.innerHTML = '';
+            if(data.length == 0) { alan.innerHTML = '<p style="padding:20px;">Şu an yayın yok, bot tarıyor...</p>'; }
+            data.forEach(m => {
+                alan.innerHTML += `<div class="kart"><div>${m.kanal_adi}</div><a href="${m.link}" class="buton">YAYINI AÇ</a></div>`;
+            });
+        });
+    </script>
+</body>
+</html>
