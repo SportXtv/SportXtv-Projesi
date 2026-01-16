@@ -5,102 +5,59 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SportXtv Pro</title>
     <style>
-        body { background-color: #0d0d0d; color: #fff; font-family: 'Segoe UI', sans-serif; margin: 0; padding: 0; overflow-x: hidden; }
+        body { background-color: #0d0d0d; color: #fff; font-family: 'Segoe UI', sans-serif; margin: 0; padding: 0; }
         .ust-bar { background: linear-gradient(180deg, #1a1a1a, #000); padding: 15px; border-bottom: 3px solid #ff6600; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; }
         .logo { color: #ff6600; margin: 0; font-size: 20px; font-weight: bold; text-transform: uppercase; }
-        .tumu-btn { background: #ff6600; color: white; padding: 7px 15px; border-radius: 6px; font-weight: bold; cursor: pointer; border: none; font-size: 13px; }
-        .durum { background: #1a0f00; color: #ff9900; padding: 6px; text-align: center; font-size: 10px; font-weight: bold; border-bottom: 1px solid #222; }
+        .durum { background: #1a0f00; color: #ff9900; padding: 6px; text-align: center; font-size: 10px; font-weight: bold; }
         
-        /* Ana Panel (4'lü Görünüm) */
         .ana-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; padding: 15px; }
-        .ana-kart { background: #1a1a1a; border-radius: 15px; padding: 25px 10px; text-align: center; border: 1px solid #333; cursor: pointer; transition: 0.3s; }
-        .ana-kart:active { transform: scale(0.95); background: #222; }
-        .ana-kart .icon { font-size: 35px; display: block; margin-bottom: 10px; }
-        .ana-kart span { display: block; font-weight: bold; font-size: 12px; color: #fff; }
+        .ana-kart { background: #1a1a1a; border-radius: 15px; padding: 20px 10px; text-align: center; border: 1px solid #333; }
+        .ana-kart span { display: block; font-weight: bold; font-size: 13px; color: #ff6600; margin-top: 5px; }
 
-        .uyari-btn { background: #ff3300; color: white; margin: 10px 15px; padding: 15px; border-radius: 10px; font-weight: bold; text-align: center; font-size: 13px; box-shadow: 0 4px 10px rgba(255,51,0,0.2); }
-        .liste-baslik { color: #ff6600; margin: 20px 0 10px 20px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; }
-
-        /* Tümü Menüsü (Kategoriler) */
-        #tumu-ekran { display: none; padding-bottom: 50px; animation: fadeIn 0.3s; }
-        .kat-baslik { background: #1a1a1a; color: #fff; padding: 16px; margin: 8px 15px; border-radius: 10px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; border-left: 5px solid #ff6600; font-weight: bold; font-size: 14px; }
-        .kat-icerik { display: none; padding: 10px 15px; background: #080808; border-radius: 0 0 10px 10px; margin: -8px 15px 10px 15px; border: 1px solid #222; border-top: none; }
-        
-        .yayin-satiri { background: #151515; padding: 14px; border-radius: 8px; margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center; border: 1px solid #222; }
-        .yayin-ad { font-weight: 500; font-size: 15px; }
-        .izle-btn { background: linear-gradient(90deg, #ff6600, #ff3300); color: white; padding: 8px 18px; border-radius: 6px; text-decoration: none; font-weight: bold; font-size: 12px; }
-
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        .kat-baslik { color: #888; font-size: 13px; margin: 20px 0 10px 15px; font-weight: bold; text-transform: uppercase; }
+        .yayin-satiri { background: #151515; padding: 15px; border-radius: 10px; margin: 0 15px 8px 15px; display: flex; justify-content: space-between; align-items: center; border: 1px solid #222; border-left: 5px solid #ff6600; }
+        .izle-btn { background: #ff6600; color: white; padding: 8px 18px; border-radius: 6px; text-decoration: none; font-weight: bold; font-size: 12px; }
     </style>
 </head>
 <body>
 
-    <div class="durum"><marquee>🚀 SportXtv Pro: Yayınlar Global CDN ve GetLinkTR Cloud altyapısı ile saniyelik güncellenir.</marquee></div>
+    <div class="durum"><marquee>🚀 SportXtv: Global CDN ve Hetzner Cloud üzerinden Dünyaca Ünlü Spor Kanalları Aktif!</marquee></div>
 
     <div class="ust-bar">
         <div class="logo">SPORTXTV PRO</div>
-        <button class="tumu-btn" onclick="tumuAcKapat()">☰ TÜMÜ</button>
+        <div style="background:#ff6600; color:white; padding:4px 10px; border-radius:4px; font-size:11px; font-weight:bold;">CANLI</div>
     </div>
 
-    <div id="ana-panel">
-        <div class="ana-grid">
-            <div class="ana-kart" onclick="location.reload()">
-                <span class="icon">⚽</span>
-                <span>MAÇLAR</span>
-            </div>
-            <div class="ana-kart" onclick="tumuAcKapat()">
-                <span class="icon">📺</span>
-                <span>SPOR TV</span>
-            </div>
-            <div class="ana-kart" onclick="tumuAcKapat()">
-                <span class="icon">🎬</span>
-                <span>DİZİ & FİLM</span>
-            </div>
-            <div class="ana-kart" onclick="tumuAcKapat()">
-                <span class="icon">🎥</span>
-                <span>ÖZETLER</span>
-            </div>
-        </div>
-        <div class="uyari-btn">⚠️ YAYIN BULUNAMADI (BOTU UYAR)</div>
-        <div class="liste-baslik">🔥 CANLI MAÇLAR</div>
-        <div id="mac-yukle" style="padding: 20px; text-align: center; color: #555;">Maç listesi yükleniyor...</div>
+    <div class="ana-grid">
+        <div class="ana-kart">⚽<span>MAÇLAR</span></div>
+        <div class="ana-kart">🏆<span>DÜNYA KANALLARI</span></div>
+        <div class="ana-kart">🎮<span>E-SPOR</span></div>
+        <div class="ana-kart">🎥<span>FİLM ARŞİVİ</span></div>
     </div>
 
-    <div id="tumu-ekran">
-        <div class="liste-baslik" style="text-align:center; font-size:18px; margin-bottom:20px;">TELEVİZYON MERKEZİ</div>
-        
-        <div class="kat-baslik" onclick="katAcKapat('spor-l')">🏆 SPOR KANALLARI <span>▼</span></div>
-        <div id="spor-l" class="kat-icerik">
-            <div class="yayin-satiri"><span class="yayin-ad">beIN Sports 1</span><a href="#" class="izle-btn">İZLE</a></div>
-            <div class="yayin-satiri"><span class="yayin-ad">beIN Sports 2</span><a href="#" class="izle-btn">İZLE</a></div>
-            <div class="yayin-satiri"><span class="yayin-ad">S Sport 1</span><a href="#" class="izle-btn">İZLE</a></div>
-            <div class="yayin-satiri"><span class="yayin-ad">Smart Spor</span><a href="#" class="izle-btn">İZLE</a></div>
-            <div class="yayin-satiri"><span class="yayin-ad">TRT Spor</span><a href="#" class="izle-btn">İZLE</a></div>
-        </div>
+    <div class="kat-baslik">🌍 GLOBAL SPOR KANALLARI</div>
+    <div class="yayin-satiri"><span>SKY SPORTS HD</span><a href="#" class="izle-btn">İZLE</a></div>
+    <div class="yayin-satiri"><span>beIN SPORTS FRANCE</span><a href="#" class="izle-btn">İZLE</a></div>
+    <div class="yayin-satiri"><span>EUROSPORT 1 & 2</span><a href="#" class="izle-btn">İZLE</a></div>
+    <div class="yayin-satiri"><span>ESPN USA</span><a href="#" class="izle-btn">İZLE</a></div>
+    <div class="yayin-satiri"><span>DAZN SPORTS</span><a href="#" class="izle-btn">İZLE</a></div>
 
-        <div class="kat-baslik" onclick="katAcKapat('ulusal-l')">🇹🇷 ULUSAL KANALLAR <span>▼</span></div>
-        <div id="ulusal-l" class="kat-icerik">
-            <div class="yayin-satiri"><span class="yayin-ad">TRT 1</span><a href="#" class="izle-btn">İZLE</a></div>
-            <div class="yayin-satiri"><span class="yayin-ad">ATV</span><a href="#" class="izle-btn">İZLE</a></div>
-            <div class="yayin-satiri"><span class="yayin-ad">SHOW TV</span><a href="#" class="izle-btn">İZLE</a></div>
-            <div class="yayin-satiri"><span class="yayin-ad">KANAL D</span><a href="#" class="izle-btn">İZLE</a></div>
-            <div class="yayin-satiri"><span class="yayin-ad">STAR TV</span><a href="#" class="izle-btn">İZLE</a></div>
-            <div class="yayin-satiri"><span class="yayin-ad">NOW TV</span><a href="#" class="izle-btn">İZLE</a></div>
-            <div class="yayin-satiri"><span class="yayin-ad">TV8</span><a href="#" class="izle-btn">İZLE</a></div>
-            <div class="yayin-satiri"><span class="yayin-ad">KANAL 7</span><a href="#" class="izle-btn">İZLE</a></div>
-        </div>
+    <div class="kat-baslik">🎮 E-SPOR & GAMING</div>
+    <div class="yayin-satiri"><span>TWITCH TOP</span><a href="#" class="izle-btn">İZLE</a></div>
+    <div class="yayin-satiri"><span>RIOT GAMES TV</span><a href="#" class="izle-btn">İZLE</a></div>
+    <div class="yayin-satiri"><span>ESL TV</span><a href="#" class="izle-btn">İZLE</a></div>
 
-        <div class="kat-baslik" onclick="katAcKapat('haber-l')">📰 HABER KANALLARI <span>▼</span></div>
-        <div id="haber-l" class="kat-icerik">
-            <div class="yayin-satiri"><span class="yayin-ad">NTV</span><a href="#" class="izle-btn">İZLE</a></div>
-            <div class="yayin-satiri"><span class="yayin-ad">HABERTÜRK</span><a href="#" class="izle-btn">İZLE</a></div>
-            <div class="yayin-satiri"><span class="yayin-ad">HALK TV</span><a href="#" class="izle-btn">İZLE</a></div>
-            <div class="yayin-satiri"><span class="yayin-ad">SÖZCÜ TV</span><a href="#" class="izle-btn">İZLE</a></div>
-            <div class="yayin-satiri"><span class="yayin-ad">A HABER</span><a href="#" class="izle-btn">İZLE</a></div>
-            <div class="yayin-satiri"><span class="yayin-ad">CNN TÜRK</span><a href="#" class="izle-btn">İZLE</a></div>
-        </div>
+    <div class="kat-baslik">🇹🇷 TÜRKİYE SPOR</div>
+    <div class="yayin-satiri"><span>beIN Sports 1</span><a href="#" class="izle-btn">İZLE</a></div>
+    <div class="yayin-satiri"><span>beIN Sports 2</span><a href="#" class="izle-btn">İZLE</a></div>
+    <div class="yayin-satiri"><span>S Sport 1 & 2</span><a href="#" class="izle-btn">İZLE</a></div>
+    <div class="yayin-satiri"><span>TRT SPOR</span><a href="#" class="izle-btn">İZLE</a></div>
+    <div class="yayin-satiri"><span>A SPOR</span><a href="#" class="izle-btn">İZLE</a></div>
 
-        <div class="kat-baslik" onclick="katAcKapat('premium-l')">💎 DİZİ & FİLM ARŞİVİ <span>▼</span></div>
-        <div id="premium-l" class="kat-icerik">
-            <div class="yayin-satiri"><span class="yayin-ad">Yerli Diziler</span><a href="#" class="izle-btn">AÇ</a></div>
-            <div class="yayin-satiri"><span class="yayin-ad">Vizyon Filmleri</span><a href="#" class="iz
+    <div class="kat-baslik">📰 HABER & ULUSAL</div>
+    <div class="yayin-satiri"><span>HALK TV</span><a href="#" class="izle-btn">İZLE</a></div>
+    <div class="yayin-satiri"><span>SÖZCÜ TV</span><a href="#" class="izle-btn">İZLE</a></div>
+    <div class="yayin-satiri"><span>SHOW TV</span><a href="#" class="izle-btn">İZLE</a></div>
+
+</body>
+</html>
