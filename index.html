@@ -6,28 +6,30 @@
     <title>SportXtv Pro</title>
     <style>
         body { background-color: #0d0d0d; color: #fff; font-family: 'Segoe UI', sans-serif; margin: 0; padding: 0; }
-        .ust-bar { background: linear-gradient(180deg, #1a1a1a, #000); padding: 20px; border-bottom: 3px solid #ff6600; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; }
-        .logo { color: #ff6600; margin: 0; font-size: 22px; font-weight: bold; text-transform: uppercase; }
-        .tumu-btn { background: #ff6600; color: white; padding: 8px 20px; border-radius: 8px; font-weight: bold; cursor: pointer; border: none; }
+        .ust-bar { background: linear-gradient(180deg, #1a1a1a, #000); padding: 15px; border-bottom: 3px solid #ff6600; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; }
+        .logo { color: #ff6600; margin: 0; font-size: 20px; font-weight: bold; text-transform: uppercase; }
+        .tumu-btn { background: #ff6600; color: white; padding: 6px 15px; border-radius: 6px; font-weight: bold; cursor: pointer; border: none; font-size: 12px; }
+        .durum { background: #1a0f00; color: #ff9900; padding: 5px; text-align: center; font-size: 10px; font-weight: bold; }
         
-        /* 4'lü Ana Panel Tasarımı */
-        .ana-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; padding: 20px; }
-        .ana-kart { background: #1a1a1a; border-radius: 20px; padding: 25px 10px; text-align: center; border: 1px solid #333; cursor: pointer; }
-        .ana-kart img { width: 50px; height: 50px; margin-bottom: 10px; }
-        .ana-kart span { display: block; font-weight: bold; font-size: 14px; text-transform: uppercase; }
+        .ana-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; padding: 15px; }
+        .ana-kart { background: #1a1a1a; border-radius: 15px; padding: 20px 10px; text-align: center; border: 1px solid #333; cursor: pointer; }
+        .ana-kart img { width: 40px; height: 40px; margin-bottom: 8px; filter: invert(47%) sepia(93%) saturate(2421%) hue-rotate(1deg) brightness(103%) contrast(106%); }
+        .ana-kart span { display: block; font-weight: bold; font-size: 12px; color: #fff; }
 
-        /* Tüm Kanallar Menüsü (Başlangıçta Gizli) */
-        #tumu-ekran { display: none; padding-top: 10px; }
-        .kat-baslik { background: #1a1a1a; color: #fff; padding: 18px; margin: 8px 15px; border-radius: 12px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; border-left: 5px solid #ff6600; font-weight: bold; }
-        .kat-icerik { display: none; padding: 10px 20px; background: #080808; border-radius: 0 0 12px 12px; margin: -8px 15px 10px 15px; border: 1px solid #222; border-top: none; }
+        .uyari-btn { background: #ff3300; color: white; margin: 10px 15px; padding: 12px; border-radius: 10px; font-weight: bold; text-align: center; font-size: 13px; }
+        .liste-baslik { color: #ff6600; margin: 20px 0 10px 15px; font-weight: bold; }
+
+        #tumu-ekran { display: none; padding-bottom: 50px; }
+        .kat-baslik { background: #1a1a1a; color: #fff; padding: 16px; margin: 8px 15px; border-radius: 10px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; border-left: 5px solid #ff6600; font-weight: bold; font-size: 14px; }
+        .kat-icerik { display: none; padding: 10px 15px; background: #080808; border-radius: 0 0 10px 10px; margin: -8px 15px 10px 15px; border: 1px solid #222; border-top: none; }
         
         .yayin-satiri { background: #151515; padding: 12px; border-radius: 8px; margin-bottom: 6px; display: flex; justify-content: space-between; align-items: center; border: 1px solid #222; }
-        .izle-btn { background: #ff6600; color: white; padding: 7px 15px; border-radius: 6px; text-decoration: none; font-weight: bold; font-size: 12px; }
-        
-        .uyari-bar { background: #ff3300; color: white; margin: 15px; padding: 15px; border-radius: 12px; font-weight: bold; text-align: center; display: flex; align-items: center; justify-content: center; gap: 10px; }
+        .izle-btn { background: #ff6600; color: white; padding: 7px 15px; border-radius: 5px; text-decoration: none; font-weight: bold; font-size: 11px; }
     </style>
 </head>
 <body>
+
+    <div class="durum"><marquee>🚀 SportXtv Pro: Tüm içerikler Global CDN protokolü ve Cloud altyapısı ile anlık güncellenir.</marquee></div>
 
     <div class="ust-bar">
         <div class="logo">SPORTXTV PRO</div>
@@ -53,38 +55,32 @@
                 <span>ÖZETLER</span>
             </div>
         </div>
-
-        <div class="uyari-bar">⚠️ YAYIN BULUNAMADI (BOTU UYAR)</div>
-        <h3 style="color:#ff6600; margin-left:20px;">CANLI MAÇLAR</h3>
+        <div class="uyari-btn">⚠️ YAYIN BULUNAMADI (BOTU UYAR)</div>
+        <div class="liste-baslik">CANLI MAÇLAR</div>
     </div>
 
     <div id="tumu-ekran">
-        <h2 style="text-align:center; color:#ff6600;">TÜM KANALLAR</h2>
+        <div class="liste-baslik" style="text-align:center; font-size:18px;">TÜM KANALLAR</div>
         
-        <div class="kat-baslik" onclick="katAcKapat('spor')">⚽ SPOR KANALLARI <span>▼</span></div>
-        <div id="spor" class="kat-icerik">
+        <div class="kat-baslik" onclick="katAcKapat('spor-l')">⚽ SPOR KANALLARI <span>▼</span></div>
+        <div id="spor-l" class="kat-icerik">
             <div class="yayin-satiri"><span>beIN Sports 1</span><a href="#" class="izle-btn">İZLE</a></div>
             <div class="yayin-satiri"><span>S Sport 1</span><a href="#" class="izle-btn">İZLE</a></div>
         </div>
 
-        <div class="kat-baslik" onclick="katAcKapat('ulusal')">📺 ULUSAL KANALLAR <span>▼</span></div>
-        <div id="ulusal" class="kat-icerik">
+        <div class="kat-baslik" onclick="katAcKapat('ulusal-l')">📺 ULUSAL KANALLAR <span>▼</span></div>
+        <div id="ulusal-l" class="kat-icerik">
             <div class="yayin-satiri"><span>TRT 1</span><a href="#" class="izle-btn">İZLE</a></div>
             <div class="yayin-satiri"><span>ATV</span><a href="#" class="izle-btn">İZLE</a></div>
             <div class="yayin-satiri"><span>SHOW TV</span><a href="#" class="izle-btn">İZLE</a></div>
+            <div class="yayin-satiri"><span>KANAL D</span><a href="#" class="izle-btn">İZLE</a></div>
         </div>
 
-        <div class="kat-baslik" onclick="katAcKapat('haber')">📰 HABER KANALLARI <span>▼</span></div>
-        <div id="haber" class="kat-icerik">
+        <div class="kat-baslik" onclick="katAcKapat('haber-l')">📰 HABER KANALLARI <span>▼</span></div>
+        <div id="haber-l" class="kat-icerik">
             <div class="yayin-satiri"><span>NTV</span><a href="#" class="izle-btn">İZLE</a></div>
             <div class="yayin-satiri"><span>HALK TV</span><a href="#" class="izle-btn">İZLE</a></div>
             <div class="yayin-satiri"><span>SÖZCÜ TV</span><a href="#" class="izle-btn">İZLE</a></div>
-        </div>
-
-        <div class="kat-baslik" onclick="katAcKapat('premium')">💎 PREMIUM PLATFORMLAR <span>▼</span></div>
-        <div id="premium" class="kat-icerik">
-            <div class="yayin-satiri"><span>NETFLIX</span><a href="#" class="izle-btn">GİRİŞ</a></div>
-            <div class="yayin-satiri"><span>EXXEN</span><a href="#" class="izle-btn">GİRİŞ</a></div>
         </div>
     </div>
 
@@ -92,7 +88,7 @@
         function tumuAcKapat() {
             var ana = document.getElementById('ana-panel');
             var tumu = document.getElementById('tumu-ekran');
-            if (tumu.style.display === "block") {
+            if(tumu.style.display === "block") {
                 tumu.style.display = "none";
                 ana.style.display = "block";
             } else {
@@ -100,7 +96,6 @@
                 ana.style.display = "none";
             }
         }
-
         function katAcKapat(id) {
             var el = document.getElementById(id);
             el.style.display = (el.style.display === "block") ? "none" : "block";
