@@ -8,56 +8,90 @@
         body { background-color: #0d0d0d; color: #fff; font-family: 'Segoe UI', sans-serif; margin: 0; padding: 0; }
         .ust-bar { background: linear-gradient(180deg, #1a1a1a, #000); padding: 15px; border-bottom: 3px solid #ff6600; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; }
         .logo { color: #ff6600; margin: 0; font-size: 20px; font-weight: bold; text-transform: uppercase; }
-        .durum { background: #1a0f00; color: #ff9900; padding: 6px; text-align: center; font-size: 10px; font-weight: bold; }
+        .tumu-btn { background: #ff6600; color: white; padding: 8px 20px; border-radius: 8px; font-weight: bold; cursor: pointer; border: none; }
         
-        .ana-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; padding: 15px; }
-        .ana-kart { background: #1a1a1a; border-radius: 15px; padding: 20px 10px; text-align: center; border: 1px solid #333; }
-        .ana-kart span { display: block; font-weight: bold; font-size: 13px; color: #ff6600; margin-top: 5px; }
+        /* Ana Panel */
+        .ana-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; padding: 20px; }
+        .ana-kart { background: #1a1a1a; border-radius: 20px; padding: 25px 10px; text-align: center; border: 1px solid #333; cursor: pointer; }
+        .ana-kart span { display: block; font-weight: bold; font-size: 14px; margin-top: 10px; }
 
-        .kat-baslik { color: #888; font-size: 13px; margin: 20px 0 10px 15px; font-weight: bold; text-transform: uppercase; }
-        .yayin-satiri { background: #151515; padding: 15px; border-radius: 10px; margin: 0 15px 8px 15px; display: flex; justify-content: space-between; align-items: center; border: 1px solid #222; border-left: 5px solid #ff6600; }
-        .izle-btn { background: #ff6600; color: white; padding: 8px 18px; border-radius: 6px; text-decoration: none; font-weight: bold; font-size: 12px; }
+        /* Tümü Ekranı (Başlangıçta Gizli) */
+        #tumu-ekran { display: none; padding: 10px 0 50px 0; }
+        .kat-baslik { background: #1a1a1a; color: #fff; padding: 16px; margin: 8px 15px; border-radius: 12px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; border-left: 5px solid #ff6600; font-weight: bold; }
+        .kat-icerik { display: none; padding: 10px 15px; background: #080808; border-radius: 0 0 12px 12px; margin: -8px 15px 10px 15px; border: 1px solid #222; border-top: none; }
+        
+        .yayin-satiri { background: #151515; padding: 12px; border-radius: 8px; margin-bottom: 6px; display: flex; justify-content: space-between; align-items: center; border: 1px solid #222; }
+        .izle-btn { background: #ff6600; color: white; padding: 7px 15px; border-radius: 6px; text-decoration: none; font-weight: bold; font-size: 12px; }
+        
+        .uyari-btn { background: #ff3300; color: white; margin: 15px; padding: 15px; border-radius: 12px; font-weight: bold; text-align: center; }
     </style>
 </head>
 <body>
 
-    <div class="durum"><marquee>🚀 SportXtv: Global CDN ve Hetzner Cloud üzerinden Dünyaca Ünlü Spor Kanalları Aktif!</marquee></div>
-
     <div class="ust-bar">
         <div class="logo">SPORTXTV PRO</div>
-        <div style="background:#ff6600; color:white; padding:4px 10px; border-radius:4px; font-size:11px; font-weight:bold;">CANLI</div>
+        <button class="tumu-btn" onclick="tumuMenuAc()">☰ TÜMÜ</button>
     </div>
 
-    <div class="ana-grid">
-        <div class="ana-kart">⚽<span>MAÇLAR</span></div>
-        <div class="ana-kart">🏆<span>DÜNYA KANALLARI</span></div>
-        <div class="ana-kart">🎮<span>E-SPOR</span></div>
-        <div class="ana-kart">🎥<span>FİLM ARŞİVİ</span></div>
+    <div id="ana-panel">
+        <div class="ana-grid">
+            <div class="ana-kart">⚽<span>MAÇLAR</span></div>
+            <div class="ana-kart" onclick="tumuMenuAc()">📺<span>SPOR TV</span></div>
+            <div class="ana-kart" onclick="tumuMenuAc()">🎬<span>DİZİ & FİLM</span></div>
+            <div class="ana-kart" onclick="tumuMenuAc()">🎥<span>ÖZETLER</span></div>
+        </div>
+        <div class="uyari-btn">⚠️ YAYIN BULUNAMADI (BOTU UYAR)</div>
+        <h3 style="color:#ff6600; margin-left:20px;">🔥 CANLI MAÇLAR</h3>
+        <p style="text-align:center; color:#888;">Maç listesi yükleniyor...</p>
     </div>
 
-    <div class="kat-baslik">🌍 GLOBAL SPOR KANALLARI</div>
-    <div class="yayin-satiri"><span>SKY SPORTS HD</span><a href="#" class="izle-btn">İZLE</a></div>
-    <div class="yayin-satiri"><span>beIN SPORTS FRANCE</span><a href="#" class="izle-btn">İZLE</a></div>
-    <div class="yayin-satiri"><span>EUROSPORT 1 & 2</span><a href="#" class="izle-btn">İZLE</a></div>
-    <div class="yayin-satiri"><span>ESPN USA</span><a href="#" class="izle-btn">İZLE</a></div>
-    <div class="yayin-satiri"><span>DAZN SPORTS</span><a href="#" class="izle-btn">İZLE</a></div>
+    <div id="tumu-ekran">
+        <div class="kat-baslik" onclick="katAc('global')">🌍 DÜNYA SPOR KANALLARI <span>▼</span></div>
+        <div id="global" class="kat-icerik">
+            <div class="yayin-satiri"><span>SKY SPORTS HD</span><a href="#" class="izle-btn">İZLE</a></div>
+            <div class="yayin-satiri"><span>ESPN USA</span><a href="#" class="izle-btn">İZLE</a></div>
+            <div class="yayin-satiri"><span>beIN SPORTS FR</span><a href="#" class="izle-btn">İZLE</a></div>
+            <div class="yayin-satiri"><span>DAZN SPORTS</span><a href="#" class="izle-btn">İZLE</a></div>
+        </div>
 
-    <div class="kat-baslik">🎮 E-SPOR & GAMING</div>
-    <div class="yayin-satiri"><span>TWITCH TOP</span><a href="#" class="izle-btn">İZLE</a></div>
-    <div class="yayin-satiri"><span>RIOT GAMES TV</span><a href="#" class="izle-btn">İZLE</a></div>
-    <div class="yayin-satiri"><span>ESL TV</span><a href="#" class="izle-btn">İZLE</a></div>
+        <div class="kat-baslik" onclick="katAc('espor')">🎮 E-SPOR & GAMING <span>▼</span></div>
+        <div id="espor" class="kat-icerik">
+            <div class="yayin-satiri"><span>TWITCH TV</span><a href="#" class="izle-btn">İZLE</a></div>
+            <div class="yayin-satiri"><span>RIOT GAMES</span><a href="#" class="izle-btn">İZLE</a></div>
+        </div>
 
-    <div class="kat-baslik">🇹🇷 TÜRKİYE SPOR</div>
-    <div class="yayin-satiri"><span>beIN Sports 1</span><a href="#" class="izle-btn">İZLE</a></div>
-    <div class="yayin-satiri"><span>beIN Sports 2</span><a href="#" class="izle-btn">İZLE</a></div>
-    <div class="yayin-satiri"><span>S Sport 1 & 2</span><a href="#" class="izle-btn">İZLE</a></div>
-    <div class="yayin-satiri"><span>TRT SPOR</span><a href="#" class="izle-btn">İZLE</a></div>
-    <div class="yayin-satiri"><span>A SPOR</span><a href="#" class="izle-btn">İZLE</a></div>
+        <div class="kat-baslik" onclick="katAc('ulusal')">🇹🇷 ULUSAL KANALLAR <span>▼</span></div>
+        <div id="ulusal" class="kat-icerik">
+            <div class="yayin-satiri"><span>TRT 1</span><a href="#" class="izle-btn">İZLE</a></div>
+            <div class="yayin-satiri"><span>ATV</span><a href="#" class="izle-btn">İZLE</a></div>
+            <div class="yayin-satiri"><span>SHOW TV</span><a href="#" class="izle-btn">İZLE</a></div>
+            <div class="yayin-satiri"><span>KANAL D</span><a href="#" class="izle-btn">İZLE</a></div>
+        </div>
 
-    <div class="kat-baslik">📰 HABER & ULUSAL</div>
-    <div class="yayin-satiri"><span>HALK TV</span><a href="#" class="izle-btn">İZLE</a></div>
-    <div class="yayin-satiri"><span>SÖZCÜ TV</span><a href="#" class="izle-btn">İZLE</a></div>
-    <div class="yayin-satiri"><span>SHOW TV</span><a href="#" class="izle-btn">İZLE</a></div>
+        <div class="kat-baslik" onclick="katAc('haber')">📰 HABER KANALLARI <span>▼</span></div>
+        <div id="haber" class="kat-icerik">
+            <div class="yayin-satiri"><span>HALK TV</span><a href="#" class="izle-btn">İZLE</a></div>
+            <div class="yayin-satiri"><span>SÖZCÜ TV</span><a href="#" class="izle-btn">İZLE</a></div>
+            <div class="yayin-satiri"><span>NTV</span><a href="#" class="izle-btn">İZLE</a></div>
+        </div>
+    </div>
 
+    <script>
+        function tumuMenuAc() {
+            var ana = document.getElementById('ana-panel');
+            var tumu = document.getElementById('tumu-ekran');
+            if (tumu.style.display === "block") {
+                tumu.style.display = "none";
+                ana.style.display = "block";
+            } else {
+                tumu.style.display = "block";
+                ana.style.display = "none";
+            }
+        }
+        function katAc(id) {
+            var el = document.getElementById(id);
+            el.style.display = (el.style.display === "block") ? "none" : "block";
+        }
+    </script>
 </body>
 </html>
