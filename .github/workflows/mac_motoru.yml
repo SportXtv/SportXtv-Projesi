@@ -1,0 +1,23 @@
+name: SportXtv 7-24 Otomatik Mac Bulucu
+
+on:
+  schedule:
+    - cron: '*/30 * * * *' # Her 30 dakikada bir dünyayı tara
+  workflow_dispatch: # İstediğimizde elimizle başlatmak için
+
+jobs:
+  tara_ve_bul:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Kodlari Al
+        uses: actions/checkout@v3
+
+      - name: Python Hazirla
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      - name: Mac Linklerini Topla
+        run: |
+          pip install telethon
+          python bot.py
