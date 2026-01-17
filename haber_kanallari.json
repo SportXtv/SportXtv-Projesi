@@ -1,0 +1,18 @@
+[
+    {
+        "ad": "HALK TV",
+        "url": "https://halktv.daionline.com/halktv/halktv.m3u8"
+    },
+    {
+        "ad": "SÖZCÜ TV",
+        "url": "https://szctv-live.daionline.com/szctv/szctv.m3u8"
+    },
+    {
+        "ad": "NTV",
+        "url": "https://dygvideo.daionline.com/ntv/ntv.m3u8"
+    },
+    {
+        "ad": "HABERTÜRK",
+        "url": "https://ciner-live.daionline.com/haberturk/haberturk.m3u8"
+    }
+]
