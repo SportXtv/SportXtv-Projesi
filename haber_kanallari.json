@@ -14,5 +14,13 @@
     {
         "ad": "HABERTÜRK",
         "url": "https://ciner-live.daionline.com/haberturk/haberturk.m3u8"
+    },
+    {
+        "ad": "CNN TÜRK",
+        "url": "https://demiroren-live.daionline.com/cnnturk/cnnturk.m3u8"
+    },
+    {
+        "ad": "TRT HABER",
+        "url": "https://tv-trthaber.medya.trt.com.tr/master.m3u8"
     }
 ]
