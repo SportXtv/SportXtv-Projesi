@@ -1,0 +1,38 @@
+[
+    {
+        "ad": "TRT 1",
+        "url": "https://tv-trt1.medya.trt.com.tr/master.m3u8"
+    },
+    {
+        "ad": "ATV",
+        "url": "https://atv-live.daionline.com/atv/atv.m3u8"
+    },
+    {
+        "ad": "SHOW TV",
+        "url": "https://ciner-live.daionline.com/showtv/showtv.m3u8"
+    },
+    {
+        "ad": "KANAL D",
+        "url": "https://demiroren-live.daionline.com/kanald/kanald.m3u8"
+    },
+    {
+        "ad": "STAR TV",
+        "url": "https://dogus-live.daionline.com/startv/startv.m3u8"
+    },
+    {
+        "ad": "NOW TV",
+        "url": "https://now-live.daionline.com/now/now.m3u8"
+    },
+    {
+        "ad": "TV8",
+        "url": "https://tv8-live.daionline.com/tv8/tv8.m3u8"
+    },
+    {
+        "ad": "TV8.5",
+        "url": "https://tv8-live.daionline.com/tv8_5/tv8_5.m3u8"
+    },
+    {
+        "ad": "KANAL 7",
+        "url": "https://kanal7-live.daionline.com/kanal7/kanal7.m3u8"
+    }
+]
