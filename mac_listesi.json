@@ -20,18 +20,8 @@
     "kategori": "Canlı Maç"
   },
   {
-    "kanal_adi": "SportX VIP 2",
-    "yayin_url": "http://babatv.online:8080/get.php?username=W5Q73EN6&password=Z37X89EB&type=m3u",
-    "kategori": "Canlı Maç"
-  },
-  {
     "kanal_adi": "Premium Yayın A",
     "yayin_url": "http://babatv.online:8080/get.php?username=XTW87HV1&password=BKG9YNVD&type=m3u",
-    "kategori": "Canlı Maç"
-  },
-  {
-    "kanal_adi": "Premium Yayın B",
-    "yayin_url": "http://babatv.online:8080/get.php?username=ZWYQLFXK&password=LGTFKAQ4&type=m3u",
     "kategori": "Canlı Maç"
   }
 ]
