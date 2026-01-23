@@ -1,38 +1,20 @@
-name: SportXtv 7-24 Otomatik Mac Bulucu
+name: SportXtv Otomatik Guncelleme
 
 on:
-  schedule:
-    - cron: '*/30 * * * *' # Her 30 dakikada bir çalışır
-  workflow_dispatch: # Elimizle başlatmak için
+  workflow_dispatch:
 
 jobs:
-  tara_ve_bul:
+  guncelle:
     runs-on: ubuntu-latest
     steps:
-      - name: Kodlari Al
-        uses: actions/checkout@v3
-
-      - name: Python Hazirla
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.9'
-
-      - name: Mac Listesini Olustur
+      - uses: actions/checkout@v3
+      - name: Dosya Olustur
         run: |
-          python -c "
-          import json
-          data = [
-              {'kanal_adi': 'SportX VIP 1', 'yayin_url': 'http://babatv.online:8080', 'kategori': 'Canlı Maç'},
-              {'kanal_adi': 'Premium Kanal', 'yayin_url': 'http://babatv.online:8080', 'kategori': 'Canlı Maç'}
-          ]
-          with open('mac_listesi.json', 'w', encoding='utf-8') as f:
-              json.dump(data, f, ensure_ascii=False, indent=4)
-          "
-
-      - name: Degisiklikleri Kaydet
+          echo '[{"kanal_adi": "SportX VIP 1", "yayin_url": "http://babatv.online:8080", "kategori": "Canlı Maç"}]' > mac_listesi.json
+      - name: Kaydet
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add mac_listesi.json
-          git commit -m "Maç listesi güncellendi" || exit 0
+          git commit -m "Liste guncellendi" || exit 0
           git push
