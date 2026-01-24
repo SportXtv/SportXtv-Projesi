@@ -8,63 +8,73 @@
         body { background-color: #0d0d0d; color: #fff; font-family: 'Segoe UI', sans-serif; margin: 0; padding: 0; }
         .ust-bar { background: linear-gradient(180deg, #1a1a1a, #000); padding: 15px; border-bottom: 3px solid #ff6600; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; }
         .logo { color: #ff6600; margin: 0; font-size: 22px; font-weight: bold; text-transform: uppercase; }
-        .tumu-btn { background: #ff6600; color: white; padding: 8px 18px; border-radius: 8px; font-weight: bold; cursor: pointer; border: none; }
         .ana-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; padding: 15px; }
-        .ana-kart { background: #1a1a1a; border-radius: 15px; padding: 25px 10px; text-align: center; border: 1px solid #333; cursor: pointer; }
+        .ana-kart { background: #1a1a1a; border-radius: 15px; padding: 25px 10px; text-align: center; border: 1px solid #333; cursor: pointer; transition: 0.3s; }
+        .ana-kart:active { transform: scale(0.95); background: #222; }
         .ana-kart span { display: block; font-weight: bold; font-size: 13px; color: #fff; margin-top: 5px; }
-        #tumu-ekran { display: none; padding-bottom: 80px; }
-        .kat-kutu { background: #1a1a1a; margin: 12px 15px; border-radius: 15px; overflow: hidden; border: 1px solid #333; }
-        .kat-baslik { padding: 18px; cursor: pointer; display: flex; justify-content: space-between; font-weight: bold; border-left: 5px solid #ff6600; color: #ff6600; text-transform: uppercase; font-size: 14px; }
-        .kat-icerik { display: block; padding: 10px; background: #080808; border-top: 1px solid #222; }
+        
+        /* Dinamik İçerik Alanı */
+        .icerik-alani { display: none; padding: 15px; }
+        .aktif { display: block !important; }
+        
+        .kat-kutu { background: #1a1a1a; border-radius: 15px; overflow: hidden; border: 1px solid #333; margin-bottom: 15px; }
         .yayin-satiri { background: #151515; padding: 15px; border-radius: 10px; margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center; border: 1px solid #222; }
         .yayin-satiri span { font-weight: bold; font-size: 14px; color: #ddd; }
         .izle-btn { background: #ff6600; color: white; padding: 8px 22px; border-radius: 6px; text-decoration: none; font-weight: bold; font-size: 12px; }
+        .geri-btn { background: #333; color: white; padding: 10px; width: 100%; border: none; border-radius: 8px; margin-bottom: 15px; font-weight: bold; cursor: pointer; }
     </style>
 </head>
 <body>
 
     <div class="ust-bar">
-        <div class="logo">SPORTXTV PRO</div>
-        <button class="tumu-btn" onclick="tumuMenuAc()">☰ TÜMÜ</button>
+        <div class="logo" onclick="anaSayfayaDon()">SPORTXTV PRO</div>
+        <div style="font-size: 12px; color: #ff6600;">CANLI AKTİF</div>
     </div>
 
-    <div id="ana-panel">
+    <div id="ana-panel" class="icerik-alani aktif">
         <div class="ana-grid">
-            <div class="ana-kart" onclick="location.reload()"><span>⚽ MAÇLAR</span></div>
-            <div class="ana-kart" onclick="tumuMenuAc()"><span>📺 SPOR TV</span></div>
-            <div class="ana-kart" onclick="tumuMenuAc()"><span>🎬 DİZİ & FİLM</span></div>
-            <div class="ana-kart" onclick="tumuMenuAc()"><span>🎮 E-SPOR</span></div>
+            <div class="ana-kart" onclick="sayfaAc('maclar')"><span>⚽ MAÇLAR</span></div>
+            <div class="ana-kart" onclick="sayfaAc('spor-tv')"><span>📺 SPOR TV</span></div>
+            <div class="ana-kart" onclick="sayfaAc('dizi-film')"><span>🎬 DİZİ & FİLM</span></div>
+            <div class="ana-kart" onclick="sayfaAc('espor')"><span>🎮 E-SPOR</span></div>
         </div>
         
-        <h3 style="color:#ff6600; margin-left:20px; font-size: 18px;">🔥 CANLI YAYINLAR</h3>
-        
-        <div class="kat-kutu">
-            <div class="kat-icerik">
-                <div class="yayin-satiri"><span>beIN SPORTS (Hızlı Liste)</span><a href="intent://raw.githubusercontent.com/skylord-iptv/tr-iptv/main/tr.m3u#Intent;scheme=http;package=org.videolan.vlc;end" class="izle-btn">İZLE</a></div>
-                <div class="yayin-satiri"><span>TRT SPOR</span><a href="intent://tv-trtsporyildiz.medya.trt.com.tr/master.m3u8#Intent;scheme=http;package=org.videolan.vlc;end" class="izle-btn">İZLE</a></div>
-                <div class="yayin-satiri"><span>A SPOR</span><a href="intent://atv-live.akamaized.net/hls/live/2030232/aspor/playlist.m3u8#Intent;scheme=http;package=org.videolan.vlc;end" class="izle-btn">İZLE</a></div>
-                <div class="yayin-satiri"><span>TV 8.5</span><a href="intent://tv8-live.daioncdn.net/tv8p/tv8p.m3u8#Intent;scheme=http;package=org.videolan.vlc;end" class="izle-btn">İZLE</a></div>
-                <div class="yayin-satiri"><span>EUROSPORT 1</span><a href="intent://iptv-org.github.io/iptv/categories/sports.m3u#Intent;scheme=http;package=org.videolan.vlc;end" class="izle-btn">İZLE</a></div>
-            </div>
+        <h3 style="color:#ff6600; margin-left:20px; font-size: 18px;">🔥 POPÜLER KANALLAR</h3>
+        <div class="kat-kutu" style="margin: 0 15px;">
+            <div class="yayin-satiri"><span>beIN SPORTS 1</span><a href="intent://CANLI_LINK_BURAYA#Intent;scheme=http;package=org.videolan.vlc;end" class="izle-btn">İZLE</a></div>
+            <div class="yayin-satiri"><span>TRT SPOR</span><a href="intent://tv-trtsporyildiz.medya.trt.com.tr/master.m3u8#Intent;scheme=http;package=org.videolan.vlc;end" class="izle-btn">İZLE</a></div>
         </div>
     </div>
 
-    <div id="tumu-ekran">
-        <p style="text-align:center; padding:20px;">Tüm kanallar yükleniyor...</p>
-        <button class="tumu-btn" style="margin:20px; width:90%;" onclick="tumuMenuAc()">GERİ DÖN</button>
+    <div id="maclar" class="icerik-alani">
+        <button class="geri-btn" onclick="anaSayfayaDon()">← GERİ DÖN</button>
+        <h3 style="color:#ff6600;">⚽ GÜNCEL MAÇLAR</h3>
+        <div class="yayin-satiri"><span>Maç 1 (20:00)</span><a href="#" class="izle-btn">YAKINDA</a></div>
+    </div>
+
+    <div id="spor-tv" class="icerik-alani">
+        <button class="geri-btn" onclick="anaSayfayaDon()">← GERİ DÖN</button>
+        <h3 style="color:#ff6600;">📺 TÜM SPOR KANALLARI</h3>
+        <div class="yayin-satiri"><span>A SPOR</span><a href="intent://atv-live.akamaized.net/hls/live/2030232/aspor/playlist.m3u8#Intent;scheme=http;package=org.videolan.vlc;end" class="izle-btn">İZLE</a></div>
+        <div class="yayin-satiri"><span>TV 8.5</span><a href="intent://tv8-live.daioncdn.net/tv8p/tv8p.m3u8#Intent;scheme=http;package=org.videolan.vlc;end" class="izle-btn">İZLE</a></div>
     </div>
 
     <script>
-        function tumuMenuAc() {
-            var ana = document.getElementById('ana-panel');
-            var tumu = document.getElementById('tumu-ekran');
-            if(tumu.style.display === "block") {
-                tumu.style.display = "none";
-                ana.style.display = "block";
-            } else {
-                tumu.style.display = "block";
-                ana.style.display = "none";
-            }
+        function sayfaAc(id) {
+            // Tüm sayfaları kapat
+            document.querySelectorAll('.icerik-alani').forEach(div => {
+                div.classList.remove('aktif');
+            });
+            // Seçilen sayfayı aç
+            document.getElementById(id).classList.add('aktif');
+            window.scrollTo(0,0);
+        }
+
+        function anaSayfayaDon() {
+            document.querySelectorAll('.icerik-alani').forEach(div => {
+                div.classList.remove('aktif');
+            });
+            document.getElementById('ana-panel').classList.add('aktif');
         }
     </script>
 </body>
