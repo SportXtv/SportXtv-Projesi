@@ -6,71 +6,66 @@
     <title>SportXtv Pro</title>
     <style>
         body { background-color: #0d0d0d; color: #fff; font-family: 'Segoe UI', sans-serif; margin: 0; padding: 0; }
-        .ust-bar { background: linear-gradient(180deg, #1a1a1a, #000); padding: 15px; border-bottom: 3px solid #ff6600; display: flex; justify-content: space-between; align-items: center; }
+        .ust-bar { background: linear-gradient(180deg, #1a1a1a, #000); padding: 15px; border-bottom: 3px solid #ff6600; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; }
         .logo { color: #ff6600; margin: 0; font-size: 22px; font-weight: bold; text-transform: uppercase; }
         .tumu-btn { background: #ff6600; color: white; padding: 8px 18px; border-radius: 8px; font-weight: bold; cursor: pointer; border: none; }
         .ana-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; padding: 15px; }
-        .ana-kart { background: #1a1a1a; border-radius: 15px; padding: 25px 10px; text-align: center; border: 1px solid #222; cursor: pointer; }
-        .ana-kart img { width: 45px; height: 45px; margin-bottom: 8px; }
-        .ana-kart span { display: block; font-weight: bold; font-size: 13px; color: #fff; }
-        #uyari-kutusu { background: #ff3300; color: white; margin: 15px; padding: 10px; border-radius: 10px; text-align: center; font-weight: bold; }
-        .yayin-satiri { background: #151515; padding: 15px; border-radius: 10px; margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center; border-left: 4px solid #ff6600; }
-        .izle-btn { background: #ff6600; color: white; padding: 8px 22px; border-radius: 6px; text-decoration: none; font-weight: bold; }
+        .ana-kart { background: #1a1a1a; border-radius: 15px; padding: 25px 10px; text-align: center; border: 1px solid #333; cursor: pointer; }
+        .ana-kart span { display: block; font-weight: bold; font-size: 13px; color: #fff; margin-top: 5px; }
+        #tumu-ekran { display: none; padding-bottom: 80px; }
+        .kat-kutu { background: #1a1a1a; margin: 12px 15px; border-radius: 15px; overflow: hidden; border: 1px solid #333; }
+        .kat-baslik { padding: 18px; cursor: pointer; display: flex; justify-content: space-between; font-weight: bold; border-left: 5px solid #ff6600; color: #ff6600; text-transform: uppercase; font-size: 14px; }
+        .kat-icerik { display: block; padding: 10px; background: #080808; border-top: 1px solid #222; }
+        .yayin-satiri { background: #151515; padding: 15px; border-radius: 10px; margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center; border: 1px solid #222; }
+        .yayin-satiri span { font-weight: bold; font-size: 14px; color: #ddd; }
+        .izle-btn { background: #ff6600; color: white; padding: 8px 22px; border-radius: 6px; text-decoration: none; font-weight: bold; font-size: 12px; }
     </style>
 </head>
 <body>
+
     <div class="ust-bar">
         <div class="logo">SPORTXTV PRO</div>
-        <button class="tumu-btn" onclick="location.reload()">YENİLE</button>
+        <button class="tumu-btn" onclick="tumuMenuAc()">☰ TÜMÜ</button>
     </div>
 
     <div id="ana-panel">
         <div class="ana-grid">
-            <div class="ana-kart" onclick="location.reload()">
-                <img src="https://cdn-icons-png.flaticon.com/512/53/53283.png">
-                <span>MAÇLAR</span>
-            </div>
-            <div class="ana-kart">
-                <img src="https://cdn-icons-png.flaticon.com/512/716/716429.png">
-                <span>SPOR TV</span>
-            </div>
+            <div class="ana-kart" onclick="location.reload()"><span>⚽ MAÇLAR</span></div>
+            <div class="ana-kart" onclick="tumuMenuAc()"><span>📺 SPOR TV</span></div>
+            <div class="ana-kart" onclick="tumuMenuAc()"><span>🎬 DİZİ & FİLM</span></div>
+            <div class="ana-kart" onclick="tumuMenuAc()"><span>🎮 E-SPOR</span></div>
         </div>
-
-        <div id="uyari-kutusu">🔥 CANLI MAÇLAR</div>
-        <div id="mac-listesi-alani" style="padding: 15px;">
-            <p style="text-align:center; color:#888;">Maçlar yükleniyor...</p>
+        
+        <h3 style="color:#ff6600; margin-left:20px; font-size: 18px;">🔥 CANLI YAYINLAR</h3>
+        
+        <div class="kat-kutu">
+            <div class="kat-icerik">
+                <div class="yayin-satiri"><span>beIN SPORTS (Hızlı Liste)</span><a href="intent://raw.githubusercontent.com/skylord-iptv/tr-iptv/main/tr.m3u#Intent;scheme=http;package=org.videolan.vlc;end" class="izle-btn">İZLE</a></div>
+                <div class="yayin-satiri"><span>TRT SPOR</span><a href="intent://tv-trtsporyildiz.medya.trt.com.tr/master.m3u8#Intent;scheme=http;package=org.videolan.vlc;end" class="izle-btn">İZLE</a></div>
+                <div class="yayin-satiri"><span>A SPOR</span><a href="intent://atv-live.akamaized.net/hls/live/2030232/aspor/playlist.m3u8#Intent;scheme=http;package=org.videolan.vlc;end" class="izle-btn">İZLE</a></div>
+                <div class="yayin-satiri"><span>TV 8.5</span><a href="intent://tv8-live.daioncdn.net/tv8p/tv8p.m3u8#Intent;scheme=http;package=org.videolan.vlc;end" class="izle-btn">İZLE</a></div>
+                <div class="yayin-satiri"><span>EUROSPORT 1</span><a href="intent://iptv-org.github.io/iptv/categories/sports.m3u#Intent;scheme=http;package=org.videolan.vlc;end" class="izle-btn">İZLE</a></div>
+            </div>
         </div>
     </div>
 
+    <div id="tumu-ekran">
+        <p style="text-align:center; padding:20px;">Tüm kanallar yükleniyor...</p>
+        <button class="tumu-btn" style="margin:20px; width:90%;" onclick="tumuMenuAc()">GERİ DÖN</button>
+    </div>
+
     <script>
-        async function maclariGetir() {
-            // Hatalı olan URL küçük harf yapılarak düzeltildi
-            const url = 'https://raw.githubusercontent.com/sportxtv/SportXtv-Projesi/main/mac_listesi.json';
-            const listeAlani = document.getElementById('mac-listesi-alani');
-
-            try {
-                const response = await fetch(url);
-                const data = await response.json();
-
-                if (data.length > 0) {
-                    let html = '';
-                    data.forEach(mac => {
-                        html += `
-                        <div class="yayin-satiri">
-                            <span>⚽ ${mac.kanal_adi}</span>
-                            <a href="${mac.yayin_linki}" class="izle-btn">İZLE</a>
-                        </div>`;
-                    });
-                    listeAlani.innerHTML = html;
-                } else {
-                    listeAlani.innerHTML = '<p style="text-align:center;">Şu an canlı maç bulunamadı.</p>';
-                }
-            } catch (e) {
-                listeAlani.innerHTML = '<p style="text-align:center; color:red;">Liste yüklenemedi!</p>';
-                console.log("Hata:", e);
+        function tumuMenuAc() {
+            var ana = document.getElementById('ana-panel');
+            var tumu = document.getElementById('tumu-ekran');
+            if(tumu.style.display === "block") {
+                tumu.style.display = "none";
+                ana.style.display = "block";
+            } else {
+                tumu.style.display = "block";
+                ana.style.display = "none";
             }
         }
-        window.onload = maclariGetir;
     </script>
 </body>
 </html>
